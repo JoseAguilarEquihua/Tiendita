@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Tiendita.View.Cart">
-    <ScrollView>
+             x:Class="Tiendita.View.Productos">
+    <ContentPage.Content>
         <StackLayout>
             <Grid>
                 <Grid.RowDefinitions>
@@ -41,5 +41,5 @@
                 <Button BackgroundColor="#DE7FA7" Grid.Row="2" Grid.Column="1" Text="Eliminar" TextColor="White" />
             </Grid>
         </StackLayout>
-    </ScrollView>
+    </ContentPage.Content>
 </ContentPage>
