@@ -7,6 +7,6 @@ namespace Tiendita.Model
     public class Auth
     {
         public string Correo { get; set; }
-        public string Password { get; set; }
+        public string Contrasenia { get; set; }
     }
 }

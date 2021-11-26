@@ -11,6 +11,7 @@
         <Entry Text="{Binding Correo}"/>
         <Entry IsPassword="true" Text="{Binding Password}"/>
         <Button Text="Login" Command="{Binding LoginCommand}"></Button>
+        <Label Text="{Binding JsonResult}"></Label>
     </StackLayout>
 
 </ContentPage>
