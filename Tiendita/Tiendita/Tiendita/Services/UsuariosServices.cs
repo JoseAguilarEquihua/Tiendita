@@ -1,19 +1,19 @@
-﻿using System.Net.Http;
+﻿using Newtonsoft.Json;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Tiendita.Helpers;
 using Tiendita.Model;
-using Newtonsoft.Json;
 
 namespace Tiendita.Services
 {
-    public class LoginService
+    public class UsuariosServices
     {
         HttpClient client;
 
-        private readonly string API_USUARIOS = "Usuarios/Login";
+        private readonly string API_USUARIOS = "Usuarios";
 
-        public LoginService()
+        public UsuariosServices()
         {
 #if DEBUG
             var handler = new BypassSSLValidationClientHandler();
@@ -23,12 +23,12 @@ namespace Tiendita.Services
 #endif
         }
 
-        public async Task<Usuario> Login(Auth usuario)
+        public async Task<Usuario> RegisterAsync(Usuario usuario)
         {
             string result = string.Empty;
             Usuario usuarioResponse = null;
 
-            if (usuario != null && !string.IsNullOrEmpty(usuario.Correo) && !string.IsNullOrEmpty(usuario.Contrasenia))
+            if (usuario != null && !string.IsNullOrEmpty(usuario.Correo) && !string.IsNullOrEmpty(usuario.Contrasenia) && !string.IsNullOrEmpty(usuario.Nombre) && !string.IsNullOrEmpty(usuario.Apellidos) && !string.IsNullOrEmpty(usuario.Direccion) && !string.IsNullOrEmpty(usuario.Telefono))
             {
 
                 result = System.Text.Json.JsonSerializer.Serialize(usuario);

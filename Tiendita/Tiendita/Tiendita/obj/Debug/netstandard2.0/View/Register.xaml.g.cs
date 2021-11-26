@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Tiendita.View.Register.xaml", "View/Register.xaml", typeof(global::Tiendita.Views.Register))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Tiendita.View.Register.xaml", "View/Register.xaml", typeof(global::Tiendita.View.Register))]
 
-namespace Tiendita.Views {
+namespace Tiendita.View {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("View\\Register.xaml")]

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Tiendita.Model;
+﻿using Tiendita.Model;
 using Tiendita.Services;
-using Tiendita.Views;
 using Xamarin.Forms;
 
 namespace Tiendita.ViewModel
@@ -11,11 +7,12 @@ namespace Tiendita.ViewModel
     public class LoginViewModel : BaseViewModel<Auth>
     {
         private Command _loginCommand;
+        private Command _registerCommand;
         private LoginService _loginService;
         private Usuario _usuario;
         private string _jsonResult;
 
-        public LoginViewModel(INavigation navigation, Auth model = null ) : base(navigation, model)
+        public LoginViewModel(INavigation navigation, Auth model = null) : base(navigation, model)
         {
             if (model == null)
             {
@@ -66,13 +63,25 @@ namespace Tiendita.ViewModel
             get => _loginCommand ?? (_loginCommand = new Command(LoginAction));
         }
 
+        public Command RegisterCommand
+        {
+            get => _registerCommand ?? (_registerCommand = new Command(RegisterAction));
+        }
+
+        private void RegisterAction()
+        {
+            Navigation.PushAsync(new View.Register());
+        }
+
         private async void LoginAction()
         {
-            Usuario usuario = await _loginService?.Login(Model);
-            if (usuario != null)
+            _usuario = await _loginService?.Login(Model);
+
+            if (_usuario != null)
             {
                 Navigation.PushAsync(new View.Productos());
-            } else
+            }
+            else
             {
                 JsonResult = "Correo o contraseña incorrectos";
             }

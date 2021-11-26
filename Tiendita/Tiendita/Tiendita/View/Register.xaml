@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Tiendita.Views.Register">
+             x:Class="Tiendita.View.Register">
     <ContentPage.Content>
         <StackLayout>
             <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
@@ -14,7 +14,7 @@
             <Entry Text="{Binding Direccion}"/>
             <Entry Text="{Binding Telefono}"/>
             <Entry IsPassword="true" Text="{Binding Password}"/>
-            <Button Text="Registrarse" Command="{Binding LoginCommand}"></Button>
+            <Button Text="Registrarse" Command="{Binding RegisterCommand}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
