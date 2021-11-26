@@ -7,14 +7,14 @@ using Xamarin.Forms;
 
 namespace Tiendita.ViewModel
 {
-    public class LoginViewModel : BaseViewModel<Usuario>
+    public class LoginViewModel : BaseViewModel<Auth>
     {
         private Command _loginCommand;
-        public LoginViewModel(INavigation navigation, Usuario model = null ) : base(navigation, model)
+        public LoginViewModel(INavigation navigation, Auth model = null ) : base(navigation, model)
         {
             if (model == null)
             {
-                Model = new Usuario();
+                Model = new Auth();
 
             }
 
