@@ -1618,27 +1618,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tprog\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Users\\Ale\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tprog\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita.iOS\\Tiendita.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita.iOS\\Tiendita.iOS.csproj",
       "projectName": "Tiendita.iOS",
-      "projectPath": "C:\\Users\\tprog\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita.iOS\\Tiendita.iOS.csproj",
-      "packagesPath": "C:\\Users\\tprog\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tprog\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita.iOS\\obj\\",
+      "projectPath": "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita.iOS\\Tiendita.iOS.csproj",
+      "packagesPath": "C:\\Users\\Ale\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\tprog\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Ale\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -1652,8 +1649,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Users\\tprog\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj": {
-              "projectPath": "C:\\Users\\tprog\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj"
+            "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj": {
+              "projectPath": "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj"
             }
           }
         }

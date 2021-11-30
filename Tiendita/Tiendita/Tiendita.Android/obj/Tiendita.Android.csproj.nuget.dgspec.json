@@ -1,26 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tprog\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita.Android\\Tiendita.Android.csproj": {}
+    "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita.Android\\Tiendita.Android.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tprog\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita.Android\\Tiendita.Android.csproj": {
+    "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita.Android\\Tiendita.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tprog\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita.Android\\Tiendita.Android.csproj",
+        "projectUniqueName": "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita.Android\\Tiendita.Android.csproj",
         "projectName": "Tiendita.Android",
-        "projectPath": "C:\\Users\\tprog\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita.Android\\Tiendita.Android.csproj",
-        "packagesPath": "C:\\Users\\tprog\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tprog\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita.Android\\obj\\",
+        "projectPath": "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita.Android\\Tiendita.Android.csproj",
+        "packagesPath": "C:\\Users\\Ale\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\tprog\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Ale\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -34,8 +32,8 @@
         "frameworks": {
           "monoandroid11.0": {
             "projectReferences": {
-              "C:\\Users\\tprog\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj": {
-                "projectPath": "C:\\Users\\tprog\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj"
+              "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj": {
+                "projectPath": "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj"
               }
             }
           }
@@ -64,22 +62,20 @@
         }
       }
     },
-    "C:\\Users\\tprog\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj": {
+    "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tprog\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj",
+        "projectUniqueName": "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj",
         "projectName": "Tiendita",
-        "projectPath": "C:\\Users\\tprog\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj",
-        "packagesPath": "C:\\Users\\tprog\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tprog\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\obj\\",
+        "projectPath": "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj",
+        "packagesPath": "C:\\Users\\Ale\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\tprog\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Ale\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -139,7 +135,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

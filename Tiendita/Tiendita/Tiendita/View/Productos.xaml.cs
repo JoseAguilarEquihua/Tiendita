@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.Net.Http;
+using Tiendita.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +14,7 @@ namespace Tiendita.View
         public Productos()
         {
             InitializeComponent();
+            BindingContext = new ProductosViewModel(Navigation);
         }
     }
 }
