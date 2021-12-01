@@ -881,23 +881,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ale\\.nuget\\packages\\": {},
+    "C:\\Users\\DonovanSalgado\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj",
+      "projectUniqueName": "C:\\Users\\DonovanSalgado\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj",
       "projectName": "Tiendita",
-      "projectPath": "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj",
-      "packagesPath": "C:\\Users\\Ale\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ale\\Documents\\Desarrollo Movil Integral\\Segundo Parcial\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\obj\\",
+      "projectPath": "C:\\Users\\DonovanSalgado\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\Tiendita.csproj",
+      "packagesPath": "C:\\Users\\DonovanSalgado\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DonovanSalgado\\Source\\Repos\\Tiendita\\Tiendita\\Tiendita\\Tiendita\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Ale\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DonovanSalgado\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],

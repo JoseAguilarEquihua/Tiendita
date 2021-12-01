@@ -5,6 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="{Binding Mensaje}"></Label>
+            <Button Text="Ver" Command="{Binding CarritoCommand}"></Button>
             <ListView x:Name="ListView1" ItemsSource ="{Binding Productos}" RowHeight="90">
                 <ListView.ItemTemplate>
                     <DataTemplate>

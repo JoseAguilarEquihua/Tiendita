@@ -10,6 +10,8 @@ namespace Tiendita.ViewModel
         private ProductoService _productoService;
         private string _mensaje;
 
+        private Command _carritoCommand;
+
         public ProductosViewModel(INavigation navigation, List<Producto> model = null) : base(navigation, model)
         {
             if (model == null)
@@ -50,5 +52,16 @@ namespace Tiendita.ViewModel
             Productos = await _productoService?.ProductosAsync();
             Mensaje = Productos.Count < 1 ? "No hay productos disponibles." : "Productos disponibles:";
         }
+
+        public Command CarritoCommand
+        {
+            get => _carritoCommand ?? (_carritoCommand = new Command(CarritoAction));
+        }
+
+        private void CarritoAction()
+        {
+            Navigation.PushAsync(new View.Cart());
+        }
+
     }
 }

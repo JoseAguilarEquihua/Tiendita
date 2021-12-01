@@ -2,44 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Tiendita.View.Cart">
-    <ScrollView>
+    <ContentPage.Content>
         <StackLayout>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+            <Label Text="{Binding Mensaje}"></Label>
+            <ListView x:Name="ListView1" ItemsSource ="{Binding Carrito}" RowHeight="90">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition  Width="*" />
-                </Grid.ColumnDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition  Width="*" />
+                                    </Grid.ColumnDefinitions>
 
-                <Button BackgroundColor="#E6287A" Grid.Row="0" Grid.Column="0" Text="Imagen" TextColor="White" Grid.RowSpan="3" />
+                                    <Button BackgroundColor="#E6287A" Grid.Row="0" Grid.Column="1" Text="Agregar" TextColor="White" Grid.RowSpan="3" Margin="15"/>
 
-                <Button BackgroundColor="#EE5D9B" Grid.Row="0" Grid.Column="1" Text="Total" TextColor="White" />
-                <Button BackgroundColor="#B90E57" Grid.Row="1" Grid.Column="1" Text="Cantidad" TextColor="White" />
-                <Button BackgroundColor="#DE7FA7" Grid.Row="2" Grid.Column="1" Text="Eliminar" TextColor="White" />
-            </Grid>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition  Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <Button BackgroundColor="#E6287A" Grid.Row="0" Grid.Column="0" Text="Imagen" TextColor="White" Grid.RowSpan="3" />
-
-                <Button BackgroundColor="#EE5D9B" Grid.Row="0" Grid.Column="1" Text="Total" TextColor="White" />
-                <Button BackgroundColor="#B90E57" Grid.Row="1" Grid.Column="1" Text="Cantidad" TextColor="White" />
-                <Button BackgroundColor="#DE7FA7" Grid.Row="2" Grid.Column="1" Text="Eliminar" TextColor="White" />
-            </Grid>
+                                    <Label Text="{Binding IdProducto}" Grid.Row="0" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
+                                    <Label Text="{Binding Cantidad}" Grid.Row="1" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
+                                    <Entry Text="{Binding Detalle}" Grid.Row="2" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
-    </ScrollView>
+    </ContentPage.Content>
 </ContentPage>

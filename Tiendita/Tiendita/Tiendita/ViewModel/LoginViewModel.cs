@@ -79,6 +79,10 @@ namespace Tiendita.ViewModel
 
             if (_usuario != null)
             {
+                Carrito cart = new Carrito();
+                cart.Correo = _usuario.Correo;
+                cart.IdCarrito = 0;
+
                 Navigation.PushAsync(new View.Productos());
             }
             else
