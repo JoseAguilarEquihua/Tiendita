@@ -11,13 +11,18 @@ namespace Tiendita.ViewModel
     {
         private CarritoService _carritoService;
         private string _mensaje;
-        public CarritoViewModel(INavigation navigation, List<CarritoDetalle> model = null) : base(navigation, model)
+        private string _correo;
+        private int _idCarrito;
+
+        public CarritoViewModel(INavigation navigation, string Correo=null, int IdCarrito = 0, List<CarritoDetalle> model = null) : base(navigation, model)
         {
             if (model == null)
             {
                 Model = new List<CarritoDetalle>();
             }
             _carritoService = new CarritoService();
+            _correo = Correo;
+            _idCarrito = IdCarrito;
 
             CarritoAction();
         }
@@ -48,7 +53,7 @@ namespace Tiendita.ViewModel
 
         private async void CarritoAction()
         {
-            Carrito = await _carritoService?.CarritoAsync();
+            Carrito = await _carritoService?.CarritoAsync(_idCarrito);
             Mensaje = Carrito.Count < 1 ? "No has agregado ningún producto." : "Productos agregados:";
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Tiendita.Model;
 using Tiendita.Services;
 using Xamarin.Forms;
@@ -8,18 +9,28 @@ namespace Tiendita.ViewModel
     class ProductosViewModel : BaseViewModel<List<Producto>>
     {
         private ProductoService _productoService;
+        private CarritoService _carritoService;
         private string _mensaje;
+        private string _correo;
+        private int _idCarrito;
+        private CarritoDetalle carritoDetalle = new CarritoDetalle();        
+        private int _idProducto;
+        private bool result;
 
         private Command _carritoCommand;
+        private Command _agregarCommand;
 
-        public ProductosViewModel(INavigation navigation, List<Producto> model = null) : base(navigation, model)
+        public ProductosViewModel(INavigation navigation, string Correo = null, int IdCarrito = 0, List<Producto> model = null) : base(navigation, model)
         {
             if (model == null)
             {
                 Model = new List<Producto>();
             }
             _productoService = new ProductoService();
+            _carritoService = new CarritoService();
 
+            _correo = Correo;
+            _idCarrito = IdCarrito;
             ProductosAction();
         }
 
@@ -47,10 +58,40 @@ namespace Tiendita.ViewModel
             }
         }
 
-        private async void ProductosAction()
+        public string Correo
         {
-            Productos = await _productoService?.ProductosAsync();
-            Mensaje = Productos.Count < 1 ? "No hay productos disponibles." : "Productos disponibles:";
+            get => _correo;
+            set
+            {
+                if (_correo == value) return;
+                _correo = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+        public int IdCarrito
+        {
+            get => _idCarrito;
+            set
+            {
+                if (_idCarrito == value) return;
+                _idCarrito = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+        public int IdProducto
+        {
+            get => _idProducto;
+            set
+            {
+                if (_idProducto == value) return;
+                _idProducto = value;
+
+                OnPropertyChanged();
+            }
         }
 
         public Command CarritoCommand
@@ -58,10 +99,44 @@ namespace Tiendita.ViewModel
             get => _carritoCommand ?? (_carritoCommand = new Command(CarritoAction));
         }
 
-        private void CarritoAction()
+        public Command AddProductCommand
         {
-            Navigation.PushAsync(new View.Cart());
+            get => _agregarCommand ?? (_agregarCommand = new Command<int>(AgregarAction));
         }
 
-    }
+        private void CarritoAction()
+        {
+            Navigation.PushAsync(new View.Cart(_correo, _idCarrito));
+        }
+
+        private async void ProductosAction()
+        {
+            Productos = await _productoService?.ProductosAsync();
+            Mensaje = Productos.Count < 1 ? "No hay productos disponibles." : "Productos disponibles:";
+        }
+
+        private async void AgregarAction(int id)
+        {
+            carritoDetalle.IdCarrito = _idCarrito;
+            carritoDetalle.IdProducto = id;
+            carritoDetalle.Cantidad = 1;
+            result = await _carritoService?.AddProductAsync(carritoDetalle);
+            if (result)
+            {
+                await App.Current.MainPage.DisplayAlert("Alerta", "Producto agregado", "OK");
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Alerta", "No se pudo insertar el producto", "OK");
+            }
+        }
+            
+           
+
+        }
+
+       
+            
+
+    
 }

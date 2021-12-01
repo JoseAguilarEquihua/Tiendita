@@ -28,7 +28,7 @@ namespace Tiendita.Services
             List<Producto> productosResult = null;
             HttpResponseMessage response = null;
 
-            response = await client.GetAsync("https://192.168.100.3:45456/api/" + API_PRODUCTOS);
+            response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_PRODUCTOS);
 
             if (response.IsSuccessStatusCode)
             {

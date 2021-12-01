@@ -116,7 +116,7 @@ namespace Tiendita.ViewModel
 
             if (_usuario != null)
             {
-                Navigation.PushAsync(new View.Productos());
+                Navigation.PushAsync(new View.Register());
             }
             else
             {

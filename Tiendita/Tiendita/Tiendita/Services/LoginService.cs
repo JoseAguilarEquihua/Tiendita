@@ -38,7 +38,7 @@ namespace Tiendita.Services
                 HttpResponseMessage response = null;
 
 
-                response = await client.PostAsync("https://192.168.100.3:45456/api/" + API_USUARIOS, content);
+                response = await client.PostAsync("https://192.168.100.7:45455/api/" + API_USUARIOS, content);
 
                 if (response.IsSuccessStatusCode)
                 {

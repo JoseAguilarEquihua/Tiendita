@@ -9,16 +9,20 @@ namespace Tiendita.ViewModel
         private Command _loginCommand;
         private Command _registerCommand;
         private LoginService _loginService;
+        private CarritoService _carritoService;
         private Usuario _usuario;
         private string _jsonResult;
+        private Carrito _cartResponse = new Carrito();
+        private Carrito _cart = new Carrito();
 
-        public LoginViewModel(INavigation navigation, Auth model = null) : base(navigation, model)
+        public LoginViewModel(INavigation navigation,  Auth model = null) : base(navigation, model)
         {
             if (model == null)
             {
                 Model = new Auth();
             }
             _loginService = new LoginService();
+            _carritoService = new CarritoService();
         }
 
         public string Correo
@@ -79,11 +83,18 @@ namespace Tiendita.ViewModel
 
             if (_usuario != null)
             {
-                Carrito cart = new Carrito();
-                cart.Correo = _usuario.Correo;
-                cart.IdCarrito = 0;
-
-                Navigation.PushAsync(new View.Productos());
+                
+                _cart.Correo = Correo;
+                _cart.IdCarrito = 0;
+                _cartResponse = await _carritoService?.AddCarritoAsync(_cart);
+                if (_cartResponse != null)
+                {
+                    Navigation.PushAsync(new View.Productos(_cartResponse.Correo, _cartResponse.IdCarrito));
+                } else
+                {
+                    JsonResult = _cartResponse.IdCarrito.ToString();
+                }
+              
             }
             else
             {

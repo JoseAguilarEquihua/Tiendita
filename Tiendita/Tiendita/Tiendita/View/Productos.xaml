@@ -1,10 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Tiendita.View.Productos">
+             x:Class="Tiendita.View.Productos"
+             x:Name="contentPage">
+            
     <ContentPage.Content>
         <StackLayout>
             <Label Text="{Binding Mensaje}"></Label>
+            <Label Text="{Binding Correo}"></Label>
+            <Label Text="{Binding IdProducto}"></Label>
             <Button Text="Ver" Command="{Binding CarritoCommand}"></Button>
             <ListView x:Name="ListView1" ItemsSource ="{Binding Productos}" RowHeight="90">
                 <ListView.ItemTemplate>
@@ -23,9 +27,9 @@
                                         <ColumnDefinition  Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Button BackgroundColor="#E6287A" Grid.Row="0" Grid.Column="1" Text="Agregar" TextColor="White" Grid.RowSpan="3" Margin="15"/>
+                                    <Button BackgroundColor="#E6287A" Grid.Row="0" Grid.Column="1" Text="Agregar" TextColor="White" Grid.RowSpan="3" Margin="15" Command="{Binding BindingContext.AddProductCommand, Source={x:Reference Name=contentPage}}" CommandParameter="{Binding IdProducto}"/>
 
-                                    <Label Text="{Binding IdProducto}" Grid.Row="0" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
+                                    <Label x:Name="idProducto" Text="{Binding IdProducto}" Grid.Row="0" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
                                     <Label Text="{Binding Producto1}" Grid.Row="1" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
                                     <Label Text="{Binding Costo}" Grid.Row="2" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
                                 </Grid>

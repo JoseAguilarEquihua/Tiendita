@@ -13,7 +13,7 @@ namespace Tiendita.ViewModel
 
         public INavigation Navigation { get; set; }
 
-        public BaseViewModel(INavigation navigation, T model )
+        public BaseViewModel(INavigation navigation, T model)
         {
             Model = model;
             Navigation = navigation;
