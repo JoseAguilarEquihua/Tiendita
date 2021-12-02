@@ -1,38 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Tiendita.View.Cart">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             x:Class="Tiendita.View.Cart"
+             x:Name="carritoPage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Spacing="30">
             <Label Text="{Binding Mensaje}"></Label>
-            <ListView x:Name="ListView1" ItemsSource ="{Binding Carrito}" RowHeight="90">
+            <ListView x:Name="ListView1" ItemsSource ="{Binding Carrito}" RowHeight="270" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
                                 <Grid>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
                                     </Grid.RowDefinitions>
 
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition  Width="*" />
+                                        <ColumnDefinition  Width="*" />
+                                        <ColumnDefinition  Width="*" />
+                                        <ColumnDefinition  Width="*" />
                                     </Grid.ColumnDefinitions>
-
-                                    <Button BackgroundColor="#E6287A" Grid.Row="0" Grid.Column="1" Text="Agregar" TextColor="White" Grid.RowSpan="3" Margin="15"/>
-
-                                    <Label Text="{Binding IdProducto}" Grid.Row="0" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
-                                    <Label Text="{Binding Cantidad}" Grid.Row="1" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
-                                    <Entry Text="{Binding Detalle}" Grid.Row="2" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
+                                    <Label Text="Cantidad" Grid.Row="0" Grid.Column="2"  Grid.ColumnSpan="3" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
+                                    <Label Text="{Binding Cantidad}" Grid.Row="1" Grid.Column="3" TextColor="#000" Margin="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                    <Button Text="-" Grid.Row="1" Grid.Column="2" Command="{Binding BindingContext.RestaCommand, Source={x:Reference Name=carritoPage}}" CommandParameter="{Binding Id}"/>
+                                    <Button Text="+" Grid.Row="1" Grid.Column="4" Command="{Binding BindingContext.SumaCommand, Source={x:Reference Name=carritoPage}}" CommandParameter="{Binding Id}"/>
+                                    <Label Text="{Binding Producto}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
+                                    <Label Text="{Binding Costo, StringFormat='${0}'}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
+                                    <Button Text="Eliminar" BackgroundColor="Red" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Command="{Binding BindingContext.EliminaCommand, Source={x:Reference Name=carritoPage}}" CommandParameter="{Binding Id}"/>
+                                    <Label Text="Detalles:" VerticalTextAlignment="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center"/>
+                                    <Entry Text="{Binding Detalle}"  Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" Placeholder="Detalles del producto" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center"/>
                                 </Grid>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Button Text="Completar compra" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

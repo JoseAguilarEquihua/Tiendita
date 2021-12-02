@@ -14,6 +14,9 @@ namespace Tiendita.Services
 
         private readonly string API_DETALLECARRITO = "DetalleCarrito";
         private readonly string API_CARRITO = "Carrito";
+        private readonly string API_CARRITODETALLEPRODUCTO = "DetalleCarrito/GetCarrito";
+        private readonly string API_MODIFICACANTIDAD = "DetalleCarrito/ModifyDetalleCarrito";
+        
 
         public CarritoService()
         {
@@ -25,18 +28,18 @@ namespace Tiendita.Services
 #endif
         }
 
-        public async Task<List<CarritoDetalle>> CarritoAsync(int idCarrito)
+        public async Task<List<CarritoDetalleProducto>> CarritoAsync(int idCarrito)
         {
-            List<CarritoDetalle> carritoResult = null;
+            List<CarritoDetalleProducto> carritoResult = null;
             HttpResponseMessage response = null;
 
-            response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_DETALLECARRITO + "?Id=" + idCarrito );
+            response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_CARRITODETALLEPRODUCTO + "/" + idCarrito );
 
             if (response.IsSuccessStatusCode)
             {
                 var contenido = response.Content;
                 var result = await contenido.ReadAsStringAsync();
-                carritoResult = JsonConvert.DeserializeObject<List<CarritoDetalle>>(result);
+                carritoResult = JsonConvert.DeserializeObject<List<CarritoDetalleProducto>>(result);
             }
 
             return carritoResult;
@@ -81,6 +84,7 @@ namespace Tiendita.Services
             {
                 var contenido = response.Content;
                 result = await contenido.ReadAsStringAsync();
+                
                 carritoResult = JsonConvert.DeserializeObject<CarritoDetalle>(result);
                 if(carritoResult != null)
                 {
@@ -91,6 +95,39 @@ namespace Tiendita.Services
             return agregado;
         }
 
+        public async Task<bool> ModificaCantidad(int id, bool accion)
+        {
+            bool result = false;
+            HttpResponseMessage response = null;
+
+            response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_MODIFICACANTIDAD + "/" + id + "/" + accion);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var contenido = response.Content;
+                result = true;
+                
+            }
+
+            return result;
+        }
+
+        public async Task<bool> EliminaProducto(int id)
+        {
+            bool result = false;
+            HttpResponseMessage response = null;
+
+            response = await client.DeleteAsync("https://192.168.100.7:45455/api/" + API_DETALLECARRITO + "/" + id );
+
+            if (response.IsSuccessStatusCode)
+            {
+                var contenido = response.Content;
+                result = true;
+
+            }
+
+            return result;
+        }
     }
 }
 

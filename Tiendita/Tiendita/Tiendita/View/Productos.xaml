@@ -31,7 +31,7 @@
 
                                     <Label x:Name="idProducto" Text="{Binding IdProducto}" Grid.Row="0" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
                                     <Label Text="{Binding Producto1}" Grid.Row="1" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
-                                    <Label Text="{Binding Costo}" Grid.Row="2" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
+                                    <Label Text="{Binding Costo, StringFormat='${0}'}" Grid.Row="2" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
                                 </Grid>
                             </StackLayout>
                         </ViewCell>
