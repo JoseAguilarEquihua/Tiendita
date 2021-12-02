@@ -42,7 +42,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Completar compra" />
+            <Label Text="{Binding Total, StringFormat='Total : ${0}'}" FontSize="16" HorizontalTextAlignment="Center" TextColor="#000" />
+            <Button Text="Completar compra" Command="{Binding CompletaPedidoCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

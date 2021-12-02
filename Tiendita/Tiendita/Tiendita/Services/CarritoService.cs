@@ -16,7 +16,7 @@ namespace Tiendita.Services
         private readonly string API_CARRITO = "Carrito";
         private readonly string API_CARRITODETALLEPRODUCTO = "DetalleCarrito/GetCarrito";
         private readonly string API_MODIFICACANTIDAD = "DetalleCarrito/ModifyDetalleCarrito";
-        
+
 
         public CarritoService()
         {
@@ -33,7 +33,7 @@ namespace Tiendita.Services
             List<CarritoDetalleProducto> carritoResult = null;
             HttpResponseMessage response = null;
 
-            response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_CARRITODETALLEPRODUCTO + "/" + idCarrito );
+            response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_CARRITODETALLEPRODUCTO + "/" + idCarrito);
 
             if (response.IsSuccessStatusCode)
             {
@@ -45,11 +45,28 @@ namespace Tiendita.Services
             return carritoResult;
         }
 
+        public async Task<List<CarritoDetalle>> CarritoDetalleAsync(int idCarrito)
+        {
+            List<CarritoDetalle> carritoResult = null;
+            HttpResponseMessage response = null;
+
+            response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_DETALLECARRITO + "/" + idCarrito);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var contenido = response.Content;
+                var result = await contenido.ReadAsStringAsync();
+                carritoResult = JsonConvert.DeserializeObject<List<CarritoDetalle>>(result);
+            }
+
+            return carritoResult;
+        }
+
         public async Task<Carrito> AddCarritoAsync(Carrito carrito)
         {
             Carrito carritoResult = null;
             HttpResponseMessage response = null;
-            string result = string.Empty;            
+            string result = string.Empty;
 
             result = System.Text.Json.JsonSerializer.Serialize(carrito);
 
@@ -84,9 +101,9 @@ namespace Tiendita.Services
             {
                 var contenido = response.Content;
                 result = await contenido.ReadAsStringAsync();
-                
+
                 carritoResult = JsonConvert.DeserializeObject<CarritoDetalle>(result);
-                if(carritoResult != null)
+                if (carritoResult != null)
                 {
                     agregado = true;
                 }
@@ -106,7 +123,7 @@ namespace Tiendita.Services
             {
                 var contenido = response.Content;
                 result = true;
-                
+
             }
 
             return result;
@@ -117,7 +134,7 @@ namespace Tiendita.Services
             bool result = false;
             HttpResponseMessage response = null;
 
-            response = await client.DeleteAsync("https://192.168.100.7:45455/api/" + API_DETALLECARRITO + "/" + id );
+            response = await client.DeleteAsync("https://192.168.100.7:45455/api/" + API_DETALLECARRITO + "/" + id);
 
             if (response.IsSuccessStatusCode)
             {
@@ -127,6 +144,17 @@ namespace Tiendita.Services
             }
 
             return result;
+        }
+      
+
+        public double CalculaTotal(List<CarritoDetalleProducto> carritoDetalle)
+        {
+            double total = 0;
+            foreach (CarritoDetalleProducto carrito in carritoDetalle)
+            {
+                total = total + (carrito.Cantidad * carrito.Costo);
+            }
+            return total;
         }
     }
 }
