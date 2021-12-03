@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fa="clr-namespace:Tiendita.Fonts"
              x:Class="Tiendita.View.Productos"
              x:Name="contentPage">
             
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Ver Carrito" Command="{Binding CarritoCommand}"></Button>
             <ListView x:Name="ListView1" ItemsSource ="{Binding Productos}" RowHeight="90">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -24,7 +24,7 @@
                                         <ColumnDefinition  Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Button BackgroundColor="#E6287A" Grid.Row="0" Grid.Column="1" Text="Agregar" TextColor="White" Grid.RowSpan="3" Margin="15" Command="{Binding BindingContext.AddProductCommand, Source={x:Reference Name=contentPage}}" CommandParameter="{Binding IdProducto}"/>
+                                    <Button BackgroundColor="#005CE0" Grid.Row="0" Grid.Column="1" Text="Agregar" TextColor="White" Grid.RowSpan="3" Margin="15" Command="{Binding BindingContext.AddProductCommand, Source={x:Reference Name=contentPage}}" CommandParameter="{Binding IdProducto}"/>
 
                                     <Label x:Name="idProducto" Text="{Binding IdProducto}" Grid.Row="0" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
                                     <Label Text="{Binding Producto1}" Grid.Row="1" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
@@ -35,7 +35,20 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Cerrar sesión" Command="{Binding LogoutCommand}"></Button>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition  Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="{x:Static fa:FontAwesomeIcons.ShoppingCart}" Command="{Binding CarritoCommand}"   BackgroundColor="#2296F3" TextColor="White" Grid.Row="0" Grid.Column="1" FontSize="19" FontFamily="FontAwesome"></Button>
+                <Button Text="{x:Static fa:FontAwesomeIcons.SignOutAlt}" Command="{Binding LogoutCommand}" Grid.Row="0" Grid.Column="0" BackgroundColor="#CD1313" TextColor="White" FontSize="19" FontFamily="FontAwesome"></Button>
+
+            </Grid>
+           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

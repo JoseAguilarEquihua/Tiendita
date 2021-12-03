@@ -1,19 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fa="clr-namespace:Tiendita.Fonts"
              x:Class="Tiendita.MainPage">
 
     <StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Inicio de sesión" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            <Label Text="Iniciar sesión" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
-        <Label Text="Ingresa tus datos" FontSize="Title" Padding="10"/>
-        <Entry Text="{Binding Correo}"/>
-        <Entry IsPassword="true" Text="{Binding Password}"/>
-        <Button Text="Login" Command="{Binding LoginCommand}"></Button>
+        <Label Text="¡Bienvenido!" FontSize="Title" Padding="10" HorizontalOptions="Center"/>
+        <Label
+                Text="{x:Static fa:FontAwesomeIcons.Store}"
+                FontSize="23"
+                FontFamily="FontAwesome" HorizontalOptions="Center" />
+        <Entry Placeholder="Correo electrónico" Text="{Binding Correo}"/>
+        <Entry Placeholder="Contraseña" IsPassword="true" Text="{Binding Password}"/>
+        <Button HorizontalOptions="Center" WidthRequest="150" Text="Login" Command="{Binding LoginCommand}">
+            <Button.ImageSource>
+                <FontImageSource Size="15" Color="Black" Glyph="&#xf2f6;" FontFamily="FontAwesome"/>
+            </Button.ImageSource>
+        </Button>
         <Label Text="{Binding JsonResult}"></Label>
 
-        <Button Text="Registrar" Command="{Binding RegisterCommand}"></Button>
-    </StackLayout>
+        <Button HorizontalOptions="Center" WidthRequest="150" Text="Registrar" Command="{Binding RegisterCommand}">
+            <Button.ImageSource>
+                <FontImageSource Size="14" Color="Black" Glyph="&#xf234;" FontFamily="FontAwesome"/>
+            </Button.ImageSource>
+        </Button>
+    </StackLayout> 
 
 </ContentPage>

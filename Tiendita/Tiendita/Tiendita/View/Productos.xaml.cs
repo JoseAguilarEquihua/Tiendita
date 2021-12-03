@@ -14,7 +14,14 @@ namespace Tiendita.View
         public Productos(string Correo, int IdCarrito, string Token = null)
         {
             InitializeComponent();
+            OnBackButtonPressed();
+            NavigationPage.SetHasBackButton(this, false);
             BindingContext = new ProductosViewModel(Navigation, Correo, IdCarrito, Token);
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
     }
 }

@@ -1,21 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fa="clr-namespace:Tiendita.Fonts"
              x:Class="Tiendita.View.Register">
     <ContentPage.Content>
         <StackLayout>
             <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
                 <Label Text="Registro" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
             </Frame>
-            <Button Text="Regresar" Command="{Binding RegresarCommand}"/>
-            <Label Text="Ingresa tus datos" FontSize="Title" Padding="10"/>
-            <Entry Text="{Binding Nombre}"/>
-            <Entry Text="{Binding Apellidos}"/>
-            <Entry Text="{Binding Correo}"/>
-            <Entry Text="{Binding Direccion}"/>
-            <Entry Text="{Binding Telefono}"/>
-            <Entry IsPassword="true" Text="{Binding Password}"/>
-            <Button Text="Registrarse" Command="{Binding RegisterCommand}"></Button>
+            <Label Text="Ingresa tus datos" FontSize="Title" Padding="10" HorizontalOptions="Center" />
+            <Label
+                Text="{x:Static fa:FontAwesomeIcons.User}"
+                FontSize="19"
+                FontFamily="FontAwesome" HorizontalOptions="Center" />
+            <Entry Placeholder="Nombre" Text="{Binding Nombre}"/>
+            <Entry Placeholder="Apellidos" Text="{Binding Apellidos}"/>
+            <Entry Placeholder="Correo" Text="{Binding Correo}"/>
+            <Entry Placeholder="Dirección" Text="{Binding Direccion}"/>
+            <Entry Placeholder="Teléfono" Text="{Binding Telefono}"/>
+            <Entry Placeholder="Contraseña" IsPassword="true" Text="{Binding Password}"/>
+            <Button HorizontalOptions="Center" WidthRequest="150" Text="Registrarse" Command="{Binding RegisterCommand}">
+                <Button.ImageSource>
+                    <FontImageSource Size="15" Color="Black" Glyph="&#xf0c7;" FontFamily="FontAwesome"/>
+                </Button.ImageSource>
+            </Button>
+            <Button HorizontalOptions="End" WidthRequest="130" Text="Regresar" Command="{Binding RegresarCommand}">
+                <Button.ImageSource>
+                    <FontImageSource Size="20" Color="Black" Glyph="&#xf060;" FontFamily="FontAwesome"/>
+                </Button.ImageSource>
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

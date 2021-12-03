@@ -14,7 +14,13 @@ namespace Tiendita
         public MainPage()
         {
             InitializeComponent();
+            OnBackButtonPressed();
+            NavigationPage.SetHasBackButton(this, false);
             BindingContext = new LoginViewModel(Navigation);
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
     }
 }

@@ -36,7 +36,7 @@ namespace Tiendita.Services
             HttpResponseMessage response = null;
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_PEDIDOPRODUCTO);
+            response = await client.GetAsync(AppResources.APIResources.APIHOST + API_PEDIDOPRODUCTO);
 
             if (response.IsSuccessStatusCode)
             {
@@ -53,7 +53,7 @@ namespace Tiendita.Services
             HttpResponseMessage response = null;
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_PEDIDOPRODUCTO + "/" + id);
+            response = await client.GetAsync(AppResources.APIResources.APIHOST + API_PEDIDOPRODUCTO + "/" + id);
 
             if (response.IsSuccessStatusCode)
             {
@@ -70,7 +70,7 @@ namespace Tiendita.Services
             HttpResponseMessage response = null;
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_PEDIDO + "/" + id);
+            response = await client.GetAsync(AppResources.APIResources.APIHOST + API_PEDIDO + "/" + id);
 
             if (response.IsSuccessStatusCode)
             {
@@ -95,7 +95,7 @@ namespace Tiendita.Services
             StringContent content = new StringContent(result, Encoding.UTF8, "application/json");
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            response = await client.PostAsync("https://192.168.100.7:45455/api/" + API_PEDIDO, content);
+            response = await client.PostAsync(AppResources.APIResources.APIHOST + API_PEDIDO, content);
 
             if (response.IsSuccessStatusCode)
             {
@@ -131,7 +131,7 @@ namespace Tiendita.Services
                 content = new StringContent(result, Encoding.UTF8, "application/json");
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                response = await client.PostAsync("https://192.168.100.7:45455/api/" + API_DETALLEPEDIDO, content);
+                response = await client.PostAsync(AppResources.APIResources.APIHOST + API_DETALLEPEDIDO, content);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -154,7 +154,7 @@ namespace Tiendita.Services
             HttpResponseMessage response = null;
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_DETALLECARRITO + "/" + id);
+            response = await client.GetAsync(AppResources.APIResources.APIHOST + API_DETALLECARRITO + "/" + id);
 
             if (response.IsSuccessStatusCode)
             {
@@ -171,7 +171,7 @@ namespace Tiendita.Services
             HttpResponseMessage response = null;
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_DETALLEPEDIDOUSUARIO + "/" + idPedido);
+            response = await client.GetAsync(AppResources.APIResources.APIHOST + API_DETALLEPEDIDOUSUARIO + "/" + idPedido);
 
             if (response.IsSuccessStatusCode)
             {

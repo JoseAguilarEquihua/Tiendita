@@ -30,7 +30,7 @@ namespace Tiendita.Services
             HttpResponseMessage response = null;
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_PRODUCTOS);
+            response = await client.GetAsync(AppResources.APIResources.APIHOST + API_PRODUCTOS);
 
             if (response.IsSuccessStatusCode)
             {

@@ -15,7 +15,13 @@ namespace Tiendita.View
         public Register()
         {
             InitializeComponent();
+            OnBackButtonPressed();
+            NavigationPage.SetHasBackButton(this, false);
             BindingContext = new UsuarioViewModel(Navigation);
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
     }
 }
