@@ -11,10 +11,10 @@ namespace Tiendita.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Productos : ContentPage
     {
-        public Productos(string Correo, int IdCarrito)
+        public Productos(string Correo, int IdCarrito, string Token = null)
         {
             InitializeComponent();
-            BindingContext = new ProductosViewModel(Navigation, Correo, IdCarrito);
+            BindingContext = new ProductosViewModel(Navigation, Correo, IdCarrito, Token);
         }
     }
 }

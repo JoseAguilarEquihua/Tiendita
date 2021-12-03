@@ -16,9 +16,9 @@ namespace Tiendita.ViewModel
         private PedidoProducto _pedidoProducto;
         private PedidoService _pedidoService;
 
+        private Command _regresaCommand;
 
-
-        public DetallePedidoViewModel(INavigation navigation, string Correo = null, string Token = null, int IdPedido = 0, string Nombre = null, string Apellidos = null, string Telefono = null, double Total = 0, List<DetallePedidoUsuario> model = null) : base(navigation, model)
+        public DetallePedidoViewModel(INavigation navigation, string Correo = null, string Token = null, int IdPedido = 0, List<DetallePedidoUsuario> model = null) : base(navigation, model)
         {
             if (model == null)
             {
@@ -68,16 +68,26 @@ namespace Tiendita.ViewModel
                 OnPropertyChanged();
             }
         }
+        
+        public Command RegresarCommand
+        {
+            get => _regresaCommand ?? (_regresaCommand = new Command(RegresaAction));
+        }
+
+        private void RegresaAction()
+        {
+            Navigation.PushAsync(new View.Dashboard(_correo, _token));
+        }
 
         private async void DetallePedidoAction()
         {
-            DetallePedido = await _pedidoService?.DetallePedidoAsync(_idPedido);            
+            DetallePedido = await _pedidoService?.DetallePedidoAsync(_idPedido, _token);            
         }
 
         private async void PedidoAction()
         {
-            Pedido = await _pedidoService?.PedidoAsync(_idPedido);
-            PedidoProducto = await _pedidoService?.PedidosProductoAsync(_idPedido);
+            Pedido = await _pedidoService?.PedidoAsync(_idPedido, _token);
+            PedidoProducto = await _pedidoService?.PedidosProductoAsync(_idPedido, _token);
         }
 
     }

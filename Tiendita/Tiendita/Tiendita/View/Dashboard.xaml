@@ -5,8 +5,7 @@
              x:Name="dashboard">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding Mensaje}"></Label>
-            <Label Text="{Binding Correo}"></Label>
+            <Button Text="Cerrar sesión" Command="{Binding LogoutCommand}"/>
             <Label Text="{Binding IdProducto}"></Label>
             <ListView x:Name="ListView1" ItemsSource ="{Binding Pedidos}" RowHeight="130" >
                 <ListView.ItemTemplate>

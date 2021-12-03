@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Tiendita.Helpers;
@@ -29,11 +30,12 @@ namespace Tiendita.Services
 #endif
         }
 
-        public async Task<List<PedidoProducto>> PedidosAsync()
+        public async Task<List<PedidoProducto>> PedidosAsync(string token)
         {
             List<PedidoProducto> pedidosResult = null;
             HttpResponseMessage response = null;
 
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_PEDIDOPRODUCTO);
 
             if (response.IsSuccessStatusCode)
@@ -45,11 +47,12 @@ namespace Tiendita.Services
             return pedidosResult;
         }
 
-        public async Task<PedidoProducto> PedidosProductoAsync(int id)
+        public async Task<PedidoProducto> PedidosProductoAsync(int id, string token)
         {
             PedidoProducto pedidosResult = null;
             HttpResponseMessage response = null;
 
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_PEDIDOPRODUCTO + "/" + id);
 
             if (response.IsSuccessStatusCode)
@@ -61,11 +64,12 @@ namespace Tiendita.Services
             return pedidosResult;
         }
 
-        public async Task<Pedido> PedidoAsync(int id)
+        public async Task<Pedido> PedidoAsync(int id, string token)
         {
             Pedido pedidoResult = null;
             HttpResponseMessage response = null;
 
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_PEDIDO + "/" + id);
 
             if (response.IsSuccessStatusCode)
@@ -77,7 +81,7 @@ namespace Tiendita.Services
             return pedidoResult;
         }
 
-        public async Task<Pedido> AddPedidoAsync(string correo, double total)
+        public async Task<Pedido> AddPedidoAsync(string correo, double total, string token)
         {
             Pedido pedidoResult = new Pedido();
             HttpResponseMessage response = null;
@@ -90,6 +94,7 @@ namespace Tiendita.Services
 
             StringContent content = new StringContent(result, Encoding.UTF8, "application/json");
 
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             response = await client.PostAsync("https://192.168.100.7:45455/api/" + API_PEDIDO, content);
 
             if (response.IsSuccessStatusCode)
@@ -102,7 +107,7 @@ namespace Tiendita.Services
             return pedidoResult;
         }
 
-        public async Task<bool> AddDetallePedidoAsync(List<CarritoDetalle> carritoDetalle, int id)
+        public async Task<bool> AddDetallePedidoAsync(List<CarritoDetalle> carritoDetalle, int id, string token)
         {
             List<PedidoDetalle> listaPedidoResult = new List<PedidoDetalle>();
             PedidoDetalle pedidoDetalle = new PedidoDetalle();
@@ -125,6 +130,7 @@ namespace Tiendita.Services
 
                 content = new StringContent(result, Encoding.UTF8, "application/json");
 
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 response = await client.PostAsync("https://192.168.100.7:45455/api/" + API_DETALLEPEDIDO, content);
 
                 if (response.IsSuccessStatusCode)
@@ -142,11 +148,12 @@ namespace Tiendita.Services
             return resultado;
         }
 
-        public async Task<bool> EliminaCarrito(int id)
+        public async Task<bool> EliminaCarrito(int id, string token)
         {
             bool result = false;
             HttpResponseMessage response = null;
 
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_DETALLECARRITO + "/" + id);
 
             if (response.IsSuccessStatusCode)
@@ -158,11 +165,12 @@ namespace Tiendita.Services
             return result;
         }
 
-        public async Task<List<DetallePedidoUsuario>> DetallePedidoAsync(int idPedido)
+        public async Task<List<DetallePedidoUsuario>> DetallePedidoAsync(int idPedido, string token)
         {
             List<DetallePedidoUsuario> detalleResult = null;
             HttpResponseMessage response = null;
 
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_DETALLEPEDIDOUSUARIO + "/" + idPedido);
 
             if (response.IsSuccessStatusCode)

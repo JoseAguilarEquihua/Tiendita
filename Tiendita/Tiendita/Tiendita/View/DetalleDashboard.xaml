@@ -4,6 +4,7 @@
              x:Class="Tiendita.View.DetalleDashboard">
     <ContentPage.Content>
         <StackLayout>
+            <Button Text="Regresar" Command="{Binding RegresarCommand}"/>
             <Label Text="{Binding Pedido.IdPedido, StringFormat='Id Pedido: {0}'}"  TextColor="#000" FontSize="16" HorizontalTextAlignment="Center"/>
             <Label VerticalTextAlignment="Center" TextColor="#000" FontSize="16" Margin="3">
                 <Label.Text>

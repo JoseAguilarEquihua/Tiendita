@@ -10,7 +10,7 @@ namespace Tiendita.ViewModel
         private Command _registerCommand;
         private LoginService _loginService;
         private CarritoService _carritoService;
-        private Usuario _usuario;
+        private Sesion _sesion;
         private string _jsonResult;
         private Carrito _cartResponse = new Carrito();
         private Carrito _cart = new Carrito();
@@ -79,22 +79,21 @@ namespace Tiendita.ViewModel
 
         private async void LoginAction()
         {
-            _usuario = await _loginService?.Login(Model);
+            _sesion = await _loginService?.Login(Model);
 
-            if (_usuario != null)
-            {
-                
+            if (_sesion != null)
+            {                
                 _cart.Correo = Correo;
                 _cart.IdCarrito = 0;
-                _cartResponse = await _carritoService?.AddCarritoAsync(_cart);
+                _cartResponse = await _carritoService?.AddCarritoAsync(_cart, _sesion.Token);
                 if (_cartResponse != null)
                 {
-                    if (_usuario.TipoUsuario)
+                    if (_sesion.usuario.TipoUsuario)
                     {
-                        await Navigation.PushAsync(new View.Productos(_cartResponse.Correo, _cartResponse.IdCarrito));
+                        await Navigation.PushAsync(new View.Productos(_cartResponse.Correo, _cartResponse.IdCarrito, _sesion.Token));
                     } else
                     {
-                        await Navigation.PushAsync(new View.Dashboard(_cartResponse.Correo, "token"));
+                        await Navigation.PushAsync(new View.Dashboard(_cartResponse.Correo, _sesion.Token));
                     }
                      
                 } else

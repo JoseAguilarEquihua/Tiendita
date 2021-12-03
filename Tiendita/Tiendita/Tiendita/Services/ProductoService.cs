@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Tiendita.Helpers;
 using Tiendita.Model;
@@ -23,11 +24,12 @@ namespace Tiendita.Services
 #endif
         }
 
-        public async Task<List<Producto>> ProductosAsync()
+        public async Task<List<Producto>> ProductosAsync(string token)
         {
             List<Producto> productosResult = null;
             HttpResponseMessage response = null;
 
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_PRODUCTOS);
 
             if (response.IsSuccessStatusCode)

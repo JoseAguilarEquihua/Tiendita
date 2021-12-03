@@ -23,10 +23,10 @@ namespace Tiendita.Services
 #endif
         }
 
-        public async Task<Usuario> Login(Auth usuario)
+        public async Task<Sesion> Login(Auth usuario)
         {
             string result = string.Empty;
-            Usuario usuarioResponse = null;
+            Sesion usuarioResponse = null;
 
             if (usuario != null && !string.IsNullOrEmpty(usuario.Correo) && !string.IsNullOrEmpty(usuario.Contrasenia))
             {
@@ -44,7 +44,7 @@ namespace Tiendita.Services
                 {
                     var contenido = response.Content;
                     result = await contenido.ReadAsStringAsync();
-                    usuarioResponse = JsonConvert.DeserializeObject<Usuario>(result);
+                    usuarioResponse = JsonConvert.DeserializeObject<Sesion>(result);
                 }
             }
 

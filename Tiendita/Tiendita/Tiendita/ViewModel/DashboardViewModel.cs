@@ -15,6 +15,7 @@ namespace Tiendita.ViewModel
         private PedidoService _pedidoService;
 
         private Command _detalleCommand;
+        private Command _logoutCommand;
 
         public DashboardViewModel(INavigation navigation, string Correo = null, string Token = null, List<PedidoProducto> model = null) : base(navigation, model)
         {
@@ -58,10 +59,20 @@ namespace Tiendita.ViewModel
             get => _detalleCommand ?? (_detalleCommand = new Command<int>(DetalleAction));
         }
 
+        public Command LogoutCommand
+        {
+            get => _logoutCommand ?? (_logoutCommand = new Command(LogoutAction));
+        }
+
         private async void PedidosAction()
         {
-            Pedidos = await _pedidoService?.PedidosAsync();
+            Pedidos = await _pedidoService?.PedidosAsync( _token);
             Mensaje = Pedidos.Count < 1 ? "No hay pedidos." : "Pedidos realizados:";
+        }
+
+        private  void LogoutAction()
+        {
+            Navigation.PushAsync(new MainPage());
         }
 
         private async void DetalleAction(int id)

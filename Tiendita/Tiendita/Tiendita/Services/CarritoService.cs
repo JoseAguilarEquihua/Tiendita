@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Tiendita.Helpers;
@@ -28,11 +29,12 @@ namespace Tiendita.Services
 #endif
         }
 
-        public async Task<List<CarritoDetalleProducto>> CarritoAsync(int idCarrito)
+        public async Task<List<CarritoDetalleProducto>> CarritoAsync(int idCarrito, string token)
         {
             List<CarritoDetalleProducto> carritoResult = null;
             HttpResponseMessage response = null;
 
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_CARRITODETALLEPRODUCTO + "/" + idCarrito);
 
             if (response.IsSuccessStatusCode)
@@ -45,11 +47,12 @@ namespace Tiendita.Services
             return carritoResult;
         }
 
-        public async Task<List<CarritoDetalle>> CarritoDetalleAsync(int idCarrito)
+        public async Task<List<CarritoDetalle>> CarritoDetalleAsync(int idCarrito, string token)
         {
             List<CarritoDetalle> carritoResult = null;
             HttpResponseMessage response = null;
 
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_DETALLECARRITO + "/" + idCarrito);
 
             if (response.IsSuccessStatusCode)
@@ -62,7 +65,7 @@ namespace Tiendita.Services
             return carritoResult;
         }
 
-        public async Task<Carrito> AddCarritoAsync(Carrito carrito)
+        public async Task<Carrito> AddCarritoAsync(Carrito carrito, string token)
         {
             Carrito carritoResult = null;
             HttpResponseMessage response = null;
@@ -72,6 +75,7 @@ namespace Tiendita.Services
 
             StringContent content = new StringContent(result, Encoding.UTF8, "application/json");
 
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             response = await client.PostAsync("https://192.168.100.7:45455/api/" + API_CARRITO, content);
 
             if (response.IsSuccessStatusCode)
@@ -84,7 +88,7 @@ namespace Tiendita.Services
             return carritoResult;
         }
 
-        public async Task<bool> AddProductAsync(CarritoDetalle carritoDetalle)
+        public async Task<bool> AddProductAsync(CarritoDetalle carritoDetalle, string token)
         {
             CarritoDetalle carritoResult = null;
             HttpResponseMessage response = null;
@@ -95,6 +99,7 @@ namespace Tiendita.Services
 
             StringContent content = new StringContent(result, Encoding.UTF8, "application/json");
 
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             response = await client.PostAsync("https://192.168.100.7:45455/api/" + API_DETALLECARRITO, content);
 
             if (response.IsSuccessStatusCode)
@@ -112,11 +117,12 @@ namespace Tiendita.Services
             return agregado;
         }
 
-        public async Task<bool> ModificaCantidad(int id, bool accion)
+        public async Task<bool> ModificaCantidad(int id, bool accion, string token)
         {
             bool result = false;
             HttpResponseMessage response = null;
 
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_MODIFICACANTIDAD + "/" + id + "/" + accion);
 
             if (response.IsSuccessStatusCode)
@@ -129,11 +135,12 @@ namespace Tiendita.Services
             return result;
         }
 
-        public async Task<bool> EliminaProducto(int id)
+        public async Task<bool> EliminaProducto(int id, string token)
         {
             bool result = false;
             HttpResponseMessage response = null;
 
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             response = await client.DeleteAsync("https://192.168.100.7:45455/api/" + API_DETALLECARRITO + "/" + id);
 
             if (response.IsSuccessStatusCode)

@@ -16,11 +16,13 @@ namespace Tiendita.ViewModel
         private CarritoDetalle carritoDetalle = new CarritoDetalle();        
         private int _idProducto;
         private bool result;
+        private string _token;
 
         private Command _carritoCommand;
         private Command _agregarCommand;
+        private Command _logoutCommand;
 
-        public ProductosViewModel(INavigation navigation, string Correo = null, int IdCarrito = 0, List<Producto> model = null) : base(navigation, model)
+        public ProductosViewModel(INavigation navigation, string Correo = null, int IdCarrito = 0,  string Token = null, List<Producto> model = null) : base(navigation, model)
         {
             if (model == null)
             {
@@ -31,6 +33,7 @@ namespace Tiendita.ViewModel
 
             _correo = Correo;
             _idCarrito = IdCarrito;
+            _token = Token;
             ProductosAction();
         }
 
@@ -104,14 +107,24 @@ namespace Tiendita.ViewModel
             get => _agregarCommand ?? (_agregarCommand = new Command<int>(AgregarAction));
         }
 
+        public Command LogoutCommand
+        {
+            get => _logoutCommand ?? (_logoutCommand = new Command(LogoutAction));
+        }
+
         private void CarritoAction()
         {
-            Navigation.PushAsync(new View.Cart(_correo, _idCarrito));
+            Navigation.PushAsync(new View.Cart(_correo, _idCarrito, _token));
+        }
+
+        private void LogoutAction()
+        {
+            Navigation.PushAsync(new MainPage());
         }
 
         private async void ProductosAction()
         {
-            Productos = await _productoService?.ProductosAsync();
+            Productos = await _productoService?.ProductosAsync(_token);
             Mensaje = Productos.Count < 1 ? "No hay productos disponibles." : "Productos disponibles:";
         }
 
@@ -120,7 +133,7 @@ namespace Tiendita.ViewModel
             carritoDetalle.IdCarrito = _idCarrito;
             carritoDetalle.IdProducto = id;
             carritoDetalle.Cantidad = 1;
-            result = await _carritoService?.AddProductAsync(carritoDetalle);
+            result = await _carritoService?.AddProductAsync(carritoDetalle, _token);
             if (result)
             {
                 await App.Current.MainPage.DisplayAlert("Alerta", "Producto agregado", "OK");

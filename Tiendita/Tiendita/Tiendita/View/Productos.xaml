@@ -6,10 +6,7 @@
             
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding Mensaje}"></Label>
-            <Label Text="{Binding Correo}"></Label>
-            <Label Text="{Binding IdProducto}"></Label>
-            <Button Text="Ver" Command="{Binding CarritoCommand}"></Button>
+            <Button Text="Ver Carrito" Command="{Binding CarritoCommand}"></Button>
             <ListView x:Name="ListView1" ItemsSource ="{Binding Productos}" RowHeight="90">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -38,6 +35,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Button Text="Cerrar sesión" Command="{Binding LogoutCommand}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

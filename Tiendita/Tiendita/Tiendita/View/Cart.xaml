@@ -6,6 +6,7 @@
     <ContentPage.Content>
         <StackLayout Spacing="30">
             <Label Text="{Binding Mensaje}"></Label>
+            <Button Text="Regresar a productos" Command="{Binding RegresarCommand}"/>
             <ListView x:Name="ListView1" ItemsSource ="{Binding Carrito}" RowHeight="270" >
                 <ListView.ItemTemplate>
                     <DataTemplate>

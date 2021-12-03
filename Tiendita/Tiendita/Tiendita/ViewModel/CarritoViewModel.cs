@@ -16,6 +16,7 @@ namespace Tiendita.ViewModel
         private int _idCarrito;
         private bool _result;
         private double _total;
+        private string _token;
         private Pedido _pedido;
         private bool _pedidoDetalle;
         private List<CarritoDetalle> _carritoDetalle;
@@ -24,8 +25,9 @@ namespace Tiendita.ViewModel
         private Command _restaCommand;
         private Command _eliminaCommand;
         private Command _completaPedidoCommand;
+        private Command _regresaCommand;
 
-        public CarritoViewModel(INavigation navigation, string Correo=null, int IdCarrito = 0, List<CarritoDetalleProducto> model = null) : base(navigation, model)
+        public CarritoViewModel(INavigation navigation, string Correo=null, int IdCarrito = 0, string Token = null, List<CarritoDetalleProducto> model = null) : base(navigation, model)
         {
             if (model == null)
             {
@@ -35,6 +37,7 @@ namespace Tiendita.ViewModel
             _pedidoService = new PedidoService();
             _correo = Correo;
             _idCarrito = IdCarrito;
+            _token = Token;
 
             CarritoAction();
         }
@@ -95,10 +98,14 @@ namespace Tiendita.ViewModel
             get => _completaPedidoCommand ?? (_completaPedidoCommand = new Command(CompletaPedidoAction));
         }
 
+        public Command RegresarCommand
+        {
+            get => _regresaCommand ?? (_regresaCommand = new Command(RegresaAction));
+        }
 
         private async void CarritoAction()
         {
-            Carrito = await _carritoService?.CarritoAsync(_idCarrito);
+            Carrito = await _carritoService?.CarritoAsync(_idCarrito, _token);
             if(Carrito != null)
             {
                 Total = _carritoService.CalculaTotal(Carrito);
@@ -106,55 +113,58 @@ namespace Tiendita.ViewModel
             else
             {
                 Total = 0;
-            }
-            
-
+            }            
             Mensaje = Carrito.Count < 1 ? "No has agregado ningún producto." : "Productos agregados:";
         }
-        
+
+        private void RegresaAction()
+        {            
+             Navigation.PushAsync(new View.Productos(_correo, _idCarrito, _token));            
+        }
+
         private async void SumaAction(int id)
         {
-            _result = await _carritoService?.ModificaCantidad(id, true);
+            _result = await _carritoService?.ModificaCantidad(id, true, _token);
             if (_result)
             {
-                await Navigation.PushAsync(new View.Cart(_correo, _idCarrito));
+                await Navigation.PushAsync(new View.Cart(_correo, _idCarrito, _token));
             }            
         }
 
         private async void RestaAction(int id)
         {
-            _result = await _carritoService?.ModificaCantidad(id, false);
+            _result = await _carritoService?.ModificaCantidad(id, false, _token);
             if (_result)
             {
-                await Navigation.PushAsync(new View.Cart(_correo, _idCarrito));
+                await Navigation.PushAsync(new View.Cart(_correo, _idCarrito, _token));
             }
         }
 
         private async void EliminaAction(int id)
         {
-            _result = await _carritoService?.EliminaProducto(id);
+            _result = await _carritoService?.EliminaProducto(id, _token);
             if (_result)
             {
-                await Navigation.PushAsync(new View.Cart(_correo, _idCarrito));
+                await Navigation.PushAsync(new View.Cart(_correo, _idCarrito, _token));
             }
         }
         
         private async void CompletaPedidoAction()
         {
-            _pedido = await _pedidoService?.AddPedidoAsync(_correo, _total);
+            _pedido = await _pedidoService?.AddPedidoAsync(_correo, _total, _token);
             if (_pedido != null)
             {
-                _carritoDetalle = await _carritoService.CarritoDetalleAsync(_idCarrito);
+                _carritoDetalle = await _carritoService.CarritoDetalleAsync(_idCarrito, _token);
                 if( _carritoDetalle != null)
                 {
-                    _pedidoDetalle = await _pedidoService.AddDetallePedidoAsync(_carritoDetalle, _pedido.IdPedido);
+                    _pedidoDetalle = await _pedidoService.AddDetallePedidoAsync(_carritoDetalle, _pedido.IdPedido, _token);
                     if(_pedidoDetalle)
                     {                        
-                        _eliminado = await _pedidoService.EliminaCarrito(_idCarrito);
+                        _eliminado = await _pedidoService.EliminaCarrito(_idCarrito, _token);
                         if(_eliminado)
                         {
                             await App.Current.MainPage.DisplayAlert("Alerta", "Pedido completado", "OK");
-                            await Navigation.PushAsync(new View.Productos(_correo, _idCarrito));
+                            await Navigation.PushAsync(new View.Productos(_correo, _idCarrito, _token));
                         }                       
                     }
                 }
