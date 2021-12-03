@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tiendita.View.DetalleDashboard">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Pedido.IdPedido, StringFormat='Id Pedido: {0}'}"  TextColor="#000" FontSize="16" HorizontalTextAlignment="Center"/>
+            <Label VerticalTextAlignment="Center" TextColor="#000" FontSize="16" Margin="3">
+                <Label.Text>
+                    <MultiBinding StringFormat="{}{0} {1}">
+                        <Binding Path="PedidoProducto.Nombre" />
+                        <Binding Path="PedidoProducto.Apellidos"/>
+                    </MultiBinding>
+                </Label.Text>
+            </Label>
+            <Label Text="{Binding PedidoProducto.Telefono, StringFormat='{0}'}"  TextColor="#000" FontSize="16"/>
+            <ListView x:Name="ListView1" ItemsSource ="{Binding DetallePedido}" RowHeight="130" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition  Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                                                      
+                                    <Label Text="{Binding Producto}"  VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
+                                    <Label Text="{Binding Cantidad, StringFormat='Cantidad: {0}'}" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
+                                    <Label Text="{Binding Costo, StringFormat='Precio: ${0}'}" VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
+                                    <Label Text="{Binding Subtotal, StringFormat='Subtotal: ${0}'}" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="1" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="{Binding Pedido.Total, StringFormat='Total ${0}'}"  TextColor="#000" FontSize="16" HorizontalTextAlignment="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

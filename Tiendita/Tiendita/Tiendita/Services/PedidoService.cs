@@ -16,6 +16,8 @@ namespace Tiendita.Services
         private readonly string API_PEDIDO = "Pedido";
         private readonly string API_DETALLEPEDIDO = "DetallePedido";
         private readonly string API_DETALLECARRITO = "DetalleCarrito/DeleteDetalleCarrito";
+        private readonly string API_PEDIDOPRODUCTO = "PedidoController/GetPedidosProducto";
+        private readonly string API_DETALLEPEDIDOUSUARIO = "PedidoController/GetDetallePedido";
 
         public PedidoService()
         {
@@ -25,6 +27,54 @@ namespace Tiendita.Services
 #else
             client = new HttpClient();
 #endif
+        }
+
+        public async Task<List<PedidoProducto>> PedidosAsync()
+        {
+            List<PedidoProducto> pedidosResult = null;
+            HttpResponseMessage response = null;
+
+            response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_PEDIDOPRODUCTO);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var contenido = response.Content;
+                var result = await contenido.ReadAsStringAsync();
+                pedidosResult = JsonConvert.DeserializeObject<List<PedidoProducto>>(result);
+            }
+            return pedidosResult;
+        }
+
+        public async Task<PedidoProducto> PedidosProductoAsync(int id)
+        {
+            PedidoProducto pedidosResult = null;
+            HttpResponseMessage response = null;
+
+            response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_PEDIDOPRODUCTO + "/" + id);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var contenido = response.Content;
+                var result = await contenido.ReadAsStringAsync();
+                pedidosResult = JsonConvert.DeserializeObject<PedidoProducto>(result);
+            }
+            return pedidosResult;
+        }
+
+        public async Task<Pedido> PedidoAsync(int id)
+        {
+            Pedido pedidoResult = null;
+            HttpResponseMessage response = null;
+
+            response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_PEDIDO + "/" + id);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var contenido = response.Content;
+                var result = await contenido.ReadAsStringAsync();
+                pedidoResult = JsonConvert.DeserializeObject<Pedido>(result);
+            }
+            return pedidoResult;
         }
 
         public async Task<Pedido> AddPedidoAsync(string correo, double total)
@@ -106,6 +156,23 @@ namespace Tiendita.Services
             }
 
             return result;
+        }
+
+        public async Task<List<DetallePedidoUsuario>> DetallePedidoAsync(int idPedido)
+        {
+            List<DetallePedidoUsuario> detalleResult = null;
+            HttpResponseMessage response = null;
+
+            response = await client.GetAsync("https://192.168.100.7:45455/api/" + API_DETALLEPEDIDOUSUARIO + "/" + idPedido);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var contenido = response.Content;
+                var result = await contenido.ReadAsStringAsync();
+                detalleResult = JsonConvert.DeserializeObject<List<DetallePedidoUsuario>>(result);
+            }
+
+            return detalleResult;
         }
 
 

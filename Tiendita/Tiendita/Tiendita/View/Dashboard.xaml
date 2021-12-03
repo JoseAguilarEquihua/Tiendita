@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tiendita.View.Dashboard"
+             x:Name="dashboard">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Mensaje}"></Label>
+            <Label Text="{Binding Correo}"></Label>
+            <Label Text="{Binding IdProducto}"></Label>
+            <ListView x:Name="ListView1" ItemsSource ="{Binding Pedidos}" RowHeight="130" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition  Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button BackgroundColor="#E6287A" Grid.Row="0" Grid.Column="1" Text="Ver detalles" TextColor="White" Grid.RowSpan="2" Margin="10"  Command="{Binding BindingContext.DetalleCommand, Source={x:Reference Name=dashboard}}" CommandParameter="{Binding IdPedido}"/>
+
+                                    <Label Text="{Binding IdPedido, StringFormat='Pedido: {0}'}" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
+                                    <Label VerticalTextAlignment="Center"  Grid.Row="1" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3">
+                                        <Label.Text>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding Path="Nombre" />
+                                                <Binding Path="Apellidos"/>
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
+                                    <Label Text="{Binding Telefono}"  VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="0" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
+                                    <Label Text="{Binding Total, StringFormat='${0}'}" VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="1" TextColor="#000" FontSize="16" HorizontalTextAlignment="Center" Margin="3"/>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

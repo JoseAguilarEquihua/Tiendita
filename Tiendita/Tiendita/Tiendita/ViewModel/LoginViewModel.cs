@@ -89,7 +89,14 @@ namespace Tiendita.ViewModel
                 _cartResponse = await _carritoService?.AddCarritoAsync(_cart);
                 if (_cartResponse != null)
                 {
-                     await Navigation.PushAsync(new View.Productos(_cartResponse.Correo, _cartResponse.IdCarrito));
+                    if (_usuario.TipoUsuario)
+                    {
+                        await Navigation.PushAsync(new View.Productos(_cartResponse.Correo, _cartResponse.IdCarrito));
+                    } else
+                    {
+                        await Navigation.PushAsync(new View.Dashboard(_cartResponse.Correo, "token"));
+                    }
+                     
                 } else
                 {
                     JsonResult = _cartResponse.IdCarrito.ToString();
