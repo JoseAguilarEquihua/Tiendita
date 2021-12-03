@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Xamarin.Forms;
@@ -24,32 +25,6 @@ namespace Tiendita.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        /*public T EncryptOrDecryptData(bool isEncrypt = true)
-        {
-            Type myType = Model.GetType();
-            var newModel = Activator.CreateInstance(myType);
-
-            IList<PropertyInfo> props = new List<PropertyInfo>(myType.GetProperties());
-
-            foreach (PropertyInfo prop in props)
-            {
-                object propValue = prop.GetValue(Model);
-
-                if (propValue != null && propValue.GetType() == typeof(string))
-                {
-                    if (isEncrypt)
-                        prop.SetValue(newModel, Helpers.Base64Encrypter.Encrypt(propValue.ToString()));
-                    else
-                        prop.SetValue(newModel, Helpers.Base64Encrypter.Decrypt(propValue.ToString()));
-                }
-            }
-
-            return (T)newModel;
-        }
-        public static string ModelToJson(T model)
-        {
-            return JsonSerializer.Serialize(model);
-        }*/
+    
     }
 }

@@ -79,6 +79,7 @@ namespace Tiendita.ViewModel
 
         private async void LoginAction()
         {
+            Model.Contrasenia = Helpers.Base64Encrypter.Encriptar(Model.Contrasenia);
             _sesion = await _loginService?.Login(Model);
 
             if (_sesion != null)

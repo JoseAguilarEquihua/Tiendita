@@ -7,9 +7,11 @@ namespace Tiendita.ViewModel
     class UsuarioViewModel : BaseViewModel<Usuario>
     {
         private Command _registerCommand;
+        private Command _regresaCommand;
         private UsuariosServices _registerService;
         private Usuario _usuario;
         private string _result;
+        
 
         public UsuarioViewModel(INavigation navigation, Usuario model = null) : base(navigation, model)
         {
@@ -104,6 +106,16 @@ namespace Tiendita.ViewModel
             }
         }
 
+        public Command RegresarCommand
+        {
+            get => _regresaCommand ?? (_regresaCommand = new Command(RegresaAction));
+        }
+
+        private void RegresaAction()
+        {
+            Navigation.PushAsync(new MainPage());
+        }
+
         public Command RegisterCommand
         {
             get => _registerCommand ?? (_registerCommand = new Command(RegisterAction));
@@ -111,12 +123,13 @@ namespace Tiendita.ViewModel
 
         private async void RegisterAction()
         {
+            Password = Helpers.Base64Encrypter.Encriptar(Model.Contrasenia);
             Model.TipoUsuario = true;
             _usuario = await _registerService?.RegisterAsync(Model);
 
             if (_usuario != null)
             {
-                await Navigation.PushAsync(new View.Register());
+                await Navigation.PushAsync(new MainPage());
             }
             else
             {

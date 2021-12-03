@@ -7,6 +7,7 @@
             <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
                 <Label Text="Registro" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
             </Frame>
+            <Button Text="Regresar" Command="{Binding RegresarCommand}"/>
             <Label Text="Ingresa tus datos" FontSize="Title" Padding="10"/>
             <Entry Text="{Binding Nombre}"/>
             <Entry Text="{Binding Apellidos}"/>

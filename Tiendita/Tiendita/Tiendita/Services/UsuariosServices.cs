@@ -11,7 +11,7 @@ namespace Tiendita.Services
     {
         HttpClient client;
 
-        private readonly string API_USUARIOS = "Usuarios";
+        private readonly string API_USUARIOS = "Usuario";
 
         public UsuariosServices()
         {
