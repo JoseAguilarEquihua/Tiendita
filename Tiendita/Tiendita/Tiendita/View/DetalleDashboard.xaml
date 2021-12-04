@@ -4,9 +4,8 @@
              x:Class="Tiendita.View.DetalleDashboard">
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Regresar" Command="{Binding RegresarCommand}"/>
             <Label Text="{Binding Pedido.IdPedido, StringFormat='Id Pedido: {0}'}"  TextColor="#000" FontSize="16" HorizontalTextAlignment="Center"/>
-            <Label VerticalTextAlignment="Center" TextColor="#000" FontSize="16" Margin="3">
+            <Label VerticalTextAlignment="Center"   HorizontalTextAlignment="Center" TextColor="#000" FontSize="16" Margin="3">
                 <Label.Text>
                     <MultiBinding StringFormat="{}{0} {1}">
                         <Binding Path="PedidoProducto.Nombre" />
@@ -14,7 +13,7 @@
                     </MultiBinding>
                 </Label.Text>
             </Label>
-            <Label Text="{Binding PedidoProducto.Telefono, StringFormat='{0}'}"  TextColor="#000" FontSize="16"/>
+            <Label Text="{Binding PedidoProducto.Telefono, StringFormat='{0}'}"  HorizontalTextAlignment="Center"  TextColor="#000" FontSize="16"/>
             <ListView x:Name="ListView1" ItemsSource ="{Binding DetallePedido}" RowHeight="130" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -42,7 +41,25 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Label Text="{Binding Pedido.Total, StringFormat='Total ${0}'}"  TextColor="#000" FontSize="16" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding Pedido.Total, StringFormat='Total ${0}'}"  TextColor="#000" FontSize="25" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding Total, StringFormat='Total : ${0}'}" FontSize="25" HorizontalTextAlignment="Center" TextColor="#000" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition  Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Regresar" Command="{Binding RegresarCommand}" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="16" BackgroundColor="#D6D7D7">
+                    <Button.ImageSource>
+                        <FontImageSource Size="20" Color="Black" Glyph="&#xf060;" FontFamily="FontAwesome" />
+                    </Button.ImageSource>
+                </Button>
+                
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

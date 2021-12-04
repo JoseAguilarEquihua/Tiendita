@@ -15,7 +15,14 @@ namespace Tiendita.View
         public DetalleDashboard(string Correo, string Token, int IdPedido)
         {
             InitializeComponent();
+            OnBackButtonPressed();
+            NavigationPage.SetHasBackButton(this, false);
             BindingContext = new DetallePedidoViewModel(Navigation, Correo, Token, IdPedido);
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
     }
 }

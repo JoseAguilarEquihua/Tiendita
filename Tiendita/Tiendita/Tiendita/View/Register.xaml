@@ -8,27 +8,38 @@
             <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
                 <Label Text="Registro" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
             </Frame>
-            <Label Text="Ingresa tus datos" FontSize="Title" Padding="10" HorizontalOptions="Center" />
+            <Label Text="Ingresa tus datos" FontSize="Title" Padding="10" HorizontalOptions="Center" TextColor="Black" />
             <Label
                 Text="{x:Static fa:FontAwesomeIcons.User}"
-                FontSize="19"
-                FontFamily="FontAwesome" HorizontalOptions="Center" />
+                FontSize="25"
+                FontFamily="FontAwesome" HorizontalOptions="Center" 
+                TextColor="#2296F3"/>
             <Entry Placeholder="Nombre" Text="{Binding Nombre}"/>
             <Entry Placeholder="Apellidos" Text="{Binding Apellidos}"/>
             <Entry Placeholder="Correo" Text="{Binding Correo}"/>
             <Entry Placeholder="Dirección" Text="{Binding Direccion}"/>
             <Entry Placeholder="Teléfono" Text="{Binding Telefono}"/>
             <Entry Placeholder="Contraseña" IsPassword="true" Text="{Binding Password}"/>
-            <Button HorizontalOptions="Center" WidthRequest="150" Text="Registrarse" Command="{Binding RegisterCommand}">
-                <Button.ImageSource>
-                    <FontImageSource Size="15" Color="Black" Glyph="&#xf0c7;" FontFamily="FontAwesome"/>
-                </Button.ImageSource>
-            </Button>
-            <Button HorizontalOptions="End" WidthRequest="130" Text="Regresar" Command="{Binding RegresarCommand}">
-                <Button.ImageSource>
-                    <FontImageSource Size="20" Color="Black" Glyph="&#xf060;" FontFamily="FontAwesome"/>
-                </Button.ImageSource>
-            </Button>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition  Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Registrarse" Command="{Binding RegisterCommand}" Grid.Column="1" Grid.Row="0" BackgroundColor="#2196F3" TextColor="White">
+                    <Button.ImageSource>
+                        <FontImageSource Size="15" Color="White" Glyph="&#xf0c7;" FontFamily="FontAwesome"/>
+                    </Button.ImageSource>
+                </Button>
+                <Button   Text="Regresar" Command="{Binding RegresarCommand}"  Grid.Column="0" Grid.Row="0" BackgroundColor="#D6D7D7">
+                    <Button.ImageSource>
+                        <FontImageSource Size="20" Color="Black" Glyph="&#xf060;" FontFamily="FontAwesome"/>
+                    </Button.ImageSource>
+                </Button>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

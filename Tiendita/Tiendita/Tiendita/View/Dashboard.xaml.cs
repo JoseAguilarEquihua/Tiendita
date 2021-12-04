@@ -15,7 +15,14 @@ namespace Tiendita.View
         public Dashboard(string Correo, string Token)
         {
             InitializeComponent();
+            OnBackButtonPressed();
+            NavigationPage.SetHasBackButton(this, false);
             BindingContext = new DashboardViewModel(Navigation, Correo, Token);
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
     }
 

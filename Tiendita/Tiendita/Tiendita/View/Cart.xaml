@@ -12,7 +12,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
-                                <Grid>
+                                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="50" />
                                         <RowDefinition Height="50" />
@@ -29,7 +29,7 @@
                                         <ColumnDefinition  Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <Label Text="Cantidad" Grid.Row="0" Grid.Column="2"  Grid.ColumnSpan="3" TextColor="#000" FontSize="19" HorizontalTextAlignment="Center" Margin="3"/>
-                                    <Label Text="{Binding Cantidad}" Grid.Row="1" Grid.Column="3" TextColor="#000" Margin="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                    <Label Text="{Binding Cantidad}" Grid.Row="1" Grid.Column="3" TextColor="#000" Margin="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="19"/>
                                     <Button Text="-" FontSize="20" BackgroundColor="#2296F3" TextColor="White" Grid.Row="1" Grid.Column="2" Command="{Binding BindingContext.RestaCommand, Source={x:Reference Name=carritoPage}}" CommandParameter="{Binding Id}"/>
                                     <Button Text="+"  FontSize="20" BackgroundColor="#2296F3" TextColor="White" Grid.Row="1" Grid.Column="4" Command="{Binding BindingContext.SumaCommand, Source={x:Reference Name=carritoPage}}" CommandParameter="{Binding Id}"/>
                                     <Label Text="{Binding Producto}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#000" FontSize="19" HorizontalTextAlignment="Center" Margin="3"/>
@@ -54,7 +54,11 @@
                     <ColumnDefinition  Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Button Text="Regresar" Command="{Binding RegresarCommand}" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="16"></Button>
+                <Button Text="Regresar" Command="{Binding RegresarCommand}" Grid.Row="0" Grid.Column="0" TextColor="Black"  FontSize="16" BackgroundColor="#D6D7D7">
+                    <Button.ImageSource>
+                        <FontImageSource Size="20" Color="Black" Glyph="&#xf060;" FontFamily="FontAwesome" />
+                    </Button.ImageSource>
+                </Button>
                 <Button Text="Completar compra" Command="{Binding CompletaPedidoCommand}" Grid.Row="0" Grid.Column="1" BackgroundColor="ForestGreen" TextColor="White" FontSize="16"></Button>
             </Grid>
         </StackLayout>
